@@ -1,0 +1,18 @@
+{
+    "name": "jjok/scheduler",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan Jefferies",
+            "email": "jonathan@jjok.co.uk"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {"jjok\\Scheduler\\": "src/"}
+    }
+}
