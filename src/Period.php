@@ -7,7 +7,7 @@ final class Period
     private $start;
     private $end;
 
-    public function __construct($start, $end)
+    public function __construct(Time $start, Time $end)
     {
         if($start > $end) {
             throw new \InvalidArgumentException('The start of a period must not be after the end.');
@@ -17,9 +17,9 @@ final class Period
         $this->end = $end;
     }
 
-    public function someTimeIsDuringThis($time)
+    public function contains(Time $time)
     {
-        return $time > $this->start &&
-               $time < $this->end;
+        return (string) $time > (string) $this->start &&
+               (string) $time < (string) $this->end;
     }
 }

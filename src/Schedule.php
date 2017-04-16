@@ -2,7 +2,9 @@
 
 namespace jjok\Scheduler;
 
+use DateTime;
+
 interface Schedule
 {
-    public function isItOn();
+    public function isOnAt(DateTime $dateTime) : bool;
 }
