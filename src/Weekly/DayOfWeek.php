@@ -65,6 +65,9 @@ final class DayOfWeek
         return new static(7, $periods);
     }
 
+    /**
+     * @todo Name this something better
+     */
     public function hasAPeriodThatIsNow(int $day, Time $time) : bool
     {
         if($day !== $this->day) {
@@ -72,11 +75,16 @@ final class DayOfWeek
         }
 
         foreach ($this->periods as $period) {
-            if($time->isDuring($period)) {
+//            if($time->isDuring($period)) {
+            if($period->includes($time)) {
                 return true;
             }
         }
 
         return false;
     }
+
+//    public function toInt() {
+//        return $this->day;
+//    }
 }

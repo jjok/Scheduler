@@ -44,8 +44,8 @@ final class Time
         );
     }
 
-    public function isDuring(Period $period) : bool
-    {
-        return $period->contains($this);
-    }
+//    public function isDuring(Period $period) : bool
+//    {
+//        return $period->contains($this);
+//    }
 }

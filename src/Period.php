@@ -25,7 +25,7 @@ final class Period
 //        return $this->end;
 //    }
 
-    public function contains(Time $time)
+    public function includes(Time $time)
     {
         return (string) $time >= (string) $this->start &&
                (string) $time < (string) $this->end;
