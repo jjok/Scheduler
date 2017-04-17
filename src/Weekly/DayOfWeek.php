@@ -1,9 +1,15 @@
 <?php
 
-namespace jjok\Scheduler;
+namespace jjok\Scheduler\Weekly;
 
-final class Day
+use jjok\Scheduler\Period;
+use jjok\Scheduler\Time;
+
+final class DayOfWeek
 {
+    /**
+     * @var int
+     */
     private $day;
 
     /**
@@ -11,6 +17,10 @@ final class Day
      */
     private $periods;
 
+    /**
+     * @param int $day
+     * @param Period[] $periods
+     */
     private function __construct(int $day, array $periods)
     {
         $this->day = $day;
@@ -62,7 +72,7 @@ final class Day
         }
 
         foreach ($this->periods as $period) {
-            if($period->contains($time)) {
+            if($time->isDuring($period)) {
                 return true;
             }
         }

@@ -1,18 +1,20 @@
 <?php
 
-namespace jjok\Scheduler;
+namespace jjok\Scheduler\Weekly;
 
 use DateTime;
+use jjok\Scheduler\Schedule as Test;
+use jjok\Scheduler\Time;
 
-final class WeeklySchedule implements Schedule
+final class Schedule implements Test
 {
     /**
-     * @var Day[]
+     * @var DayOfWeek[]
      */
-    private $days;
+    private $days = [];
 
     /**
-     * @param Day[] $days
+     * @param DayOfWeek[] $days
      */
     public function __construct(array $days)
     {
@@ -21,9 +23,13 @@ final class WeeklySchedule implements Schedule
         }
     }
 
-    private function addDay(Day $day)
+    private function addDay(DayOfWeek $day)
     {
         //TODO Some validation. Don't add same day twice
+        foreach ($this->days as $current_day) {
+
+        }
+
         $this->days[] = $day;
     }
 
@@ -31,6 +37,7 @@ final class WeeklySchedule implements Schedule
     {
         $day_of_week = $dateTime->format('N');
         $time = Time::fromString($dateTime->format('H:i:s'));
+
         foreach ($this->days as $day) {
             if($day->hasAPeriodThatIsNow($day_of_week, $time)) {
                 return true;

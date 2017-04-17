@@ -17,9 +17,17 @@ final class Period
         $this->end = $end;
     }
 
+//    public function getStart() {
+//        return $this->start;
+//    }
+//
+//    public function getEnd() {
+//        return $this->end;
+//    }
+
     public function contains(Time $time)
     {
-        return (string) $time > (string) $this->start &&
+        return (string) $time >= (string) $this->start &&
                (string) $time < (string) $this->end;
     }
 }
