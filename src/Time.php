@@ -27,14 +27,14 @@ final class Time
         $this->seconds = $seconds;
     }
 
-    public static function fromString($time) : Time
+    public static function fromString(string $time) : Time
     {
         list($hour, $minutes, $seconds) = sscanf($time, '%u:%u:%u');
 
         return new static($hour, $minutes, $seconds);
     }
 
-    public function __toString()
+    public function __toString() : string
     {
         return sprintf(
             '%s:%s:%s',
@@ -44,7 +44,8 @@ final class Time
         );
     }
 
-    public function isDuring(Period $period) {
+    public function isDuring(Period $period) : bool
+    {
         return $period->contains($this);
     }
 }
