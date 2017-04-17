@@ -36,6 +36,15 @@ final class Time
 
     public function __toString()
     {
-        return sprintf('%u:%u:%u', $this->hour, $this->minutes, $this->seconds);
+        return sprintf(
+            '%s:%s:%s',
+            str_pad($this->hour, 2, '0', \STR_PAD_LEFT),
+            str_pad($this->minutes, 2, '0', \STR_PAD_LEFT),
+            str_pad($this->seconds, 2, '0', \STR_PAD_LEFT)
+        );
+    }
+
+    public function isDuring(Period $period) {
+        return $period->contains($this);
     }
 }
