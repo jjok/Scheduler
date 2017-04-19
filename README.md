@@ -3,6 +3,9 @@ Scheduler
 
 An emulation of my central heating controller.
 
+[![Build Status](https://travis-ci.org/jjok/Scheduler.svg?branch=master)](https://travis-ci.org/jjok/Scheduler)
+
+
 Start with a configuration file:
 
     ---
