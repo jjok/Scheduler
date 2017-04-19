@@ -1,5 +1,9 @@
 <?php
 
 spl_autoload_register(function(string $class) {
-    require_once sprintf('src/%s.php', str_replace('\\', '/', $class));
+    $file = sprintf('src/%s.php', str_replace('\\', '/', $class));
+
+    if(file_exists($file)) {
+        require_once $file;
+    }
 });
