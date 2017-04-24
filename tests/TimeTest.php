@@ -86,4 +86,29 @@ final class TimeTest extends TestCase
         $time2 = Time::fromString('01:04:06');
         $this->assertSame('01:04:06', $time2->toString());
     }
+
+    public function testOneTimeCanBeforeAnother()
+    {
+        $time1 = Time::fromString('12:00:00');
+        $time2 = Time::fromString('12:00:01');
+
+        $this->assertTrue($time1->isBefore($time2));
+    }
+
+    public function testOneTimeCanBeAfterAnother()
+    {
+        $time1 = Time::fromString('12:00:01');
+        $time2 = Time::fromString('12:00:00');
+
+        $this->assertTrue($time1->isAfter($time2));
+    }
+
+    public function testEqualTimesAreNeitherBeforeOrAfterEachOther()
+    {
+        $time1 = Time::fromString('12:00:00');
+        $time2 = Time::fromString('12:00:00');
+
+        $this->assertFalse($time1->isBefore($time2));
+        $this->assertFalse($time1->isAfter($time2));
+    }
 }

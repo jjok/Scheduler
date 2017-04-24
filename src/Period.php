@@ -30,7 +30,7 @@ class Period
 
     public function includes(Time $time)
     {
-        return $time->toString() >= $this->start->toString() &&
-               $time->toString() <= $this->end->toString();
+        return !$time->isBefore($this->start) &&
+               !$time->isAfter($this->end);
     }
 }

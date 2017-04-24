@@ -45,6 +45,16 @@ final class Time
         );
     }
 
+    public function isBefore(Time $other)
+    {
+        return $this->toString() < $other->toString();
+    }
+
+    public function isAfter(Time $other)
+    {
+        return $this->toString() > $other->toString();
+    }
+
 //    public function isDuring(Period $period) : bool
 //    {
 //        return $period->contains($this);
