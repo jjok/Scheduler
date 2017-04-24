@@ -26,19 +26,20 @@ final class PeriodTest extends TestCase
         $this->assertFalse($period->includes(Time::fromString('07:59:59')));
     }
 
-    public function testPeriodIncludesTimesBetweenStartToEnd() {
+    public function testPeriodIncludesTimesFromStartToEnd() {
         $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
 
         $this->assertTrue($period->includes(Time::fromString('08:00:00')));
         $this->assertTrue($period->includes(Time::fromString('08:34:01')));
         $this->assertTrue($period->includes(Time::fromString('08:59:59')));
+        $this->assertTrue($period->includes(Time::fromString('09:00:00')));
     }
 
     public function testPeriodDoesNotIncludeTimesAfterEnd() {
         $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
 
-        $this->assertFalse($period->includes(Time::fromString('09:00:00')));
         $this->assertFalse($period->includes(Time::fromString('09:00:01')));
+        $this->assertFalse($period->includes(Time::fromString('12:00:00')));
         $this->assertFalse($period->includes(Time::fromString('23:59:59')));
     }
 }

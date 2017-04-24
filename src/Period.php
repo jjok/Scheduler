@@ -2,7 +2,10 @@
 
 namespace jjok\Scheduler;
 
-final class Period
+/**
+ * A period of time.
+ */
+class Period
 {
     private $start;
     private $end;
@@ -27,7 +30,7 @@ final class Period
 
     public function includes(Time $time)
     {
-        return (string) $time >= (string) $this->start &&
-               (string) $time < (string) $this->end;
+        return $time->toString() >= $this->start->toString() &&
+               $time->toString() <= $this->end->toString();
     }
 }

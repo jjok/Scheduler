@@ -61,29 +61,29 @@ final class TimeTest extends TestCase
     {
         $time = new Time(9);
 
-        $this->assertSame('09:00:00', (string) $time);
+        $this->assertSame('09:00:00', $time->toString());
     }
 
     public function testMinutesMayBeSet()
     {
         $time = new Time(12, 06);
 
-        $this->assertSame('12:06:00', (string) $time);
+        $this->assertSame('12:06:00', $time->toString());
     }
 
     public function testSecondsMayBeSet()
     {
         $time = new Time(23, 59, 04);
 
-        $this->assertSame('23:59:04', (string) $time);
+        $this->assertSame('23:59:04', $time->toString());
     }
 
     public function testTimeCanBeCreatedFromString()
     {
         $time1 = Time::fromString('12:34:56');
-        $this->assertSame('12:34:56', (string) $time1);
+        $this->assertSame('12:34:56', $time1->toString());
 
         $time2 = Time::fromString('01:04:06');
-        $this->assertSame('01:04:06', (string) $time2);
+        $this->assertSame('01:04:06', $time2->toString());
     }
 }

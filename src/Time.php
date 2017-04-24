@@ -2,6 +2,7 @@
 
 namespace jjok\Scheduler;
 
+
 final class Time
 {
     private $hour;
@@ -34,7 +35,7 @@ final class Time
         return new static($hour, $minutes, $seconds);
     }
 
-    public function __toString() : string
+    public function toString() : string
     {
         return sprintf(
             '%s:%s:%s',

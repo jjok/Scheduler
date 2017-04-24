@@ -57,9 +57,9 @@ final class ScheduleFactoryTest extends TestCase
 
         $this->assertInstanceOf(Schedule::class, $schedule);
         $this->assertTrue($schedule->isOnAt($this->createDateTime('2017-04-17 12:00:00')));
-        $this->assertFalse($schedule->isOnAt($this->createDateTime('2017-04-17 13:00:00')));
+        $this->assertFalse($schedule->isOnAt($this->createDateTime('2017-04-17 13:00:01')));
         $this->assertTrue($schedule->isOnAt($this->createDateTime('2017-04-23 01:00:00')));
-        $this->assertFalse($schedule->isOnAt($this->createDateTime('2017-04-23 01:30:00')));
+        $this->assertFalse($schedule->isOnAt($this->createDateTime('2017-04-23 01:30:01')));
     }
 
     private function createDateTime(string $time)
