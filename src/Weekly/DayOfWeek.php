@@ -71,7 +71,7 @@ final class DayOfWeek
     public function hasAPeriodThatIsNow(int $day, Time $time) : bool
     {
         if($day !== $this->day) {
-            false;
+            return false;
         }
 
         foreach ($this->periods as $period) {
