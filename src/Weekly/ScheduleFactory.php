@@ -12,11 +12,11 @@ final class ScheduleFactory
         $week = [];
 
         foreach ($config as $dayName => $periodValues) {
-            $periods = array_map([$this, 'createPeriod'], $periodValues);
-
             if(!method_exists(DayOfWeek::class, $dayName)) {
                 throw new \InvalidArgumentException(sprintf('%s is not a valid day.', $dayName));
             }
+
+            $periods = array_map([$this, 'createPeriod'], $periodValues);
 
             $week[] = DayOfWeek::$dayName($periods);
         }

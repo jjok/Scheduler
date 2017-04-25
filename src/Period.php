@@ -12,7 +12,7 @@ class Period
 
     public function __construct(Time $start, Time $end)
     {
-        if($start > $end) {
+        if($start->isAfter($end)) {
             throw new \InvalidArgumentException('The start of a period must not be after the end.');
         }
 

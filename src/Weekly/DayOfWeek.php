@@ -17,19 +17,6 @@ final class DayOfWeek
      */
     private $periods;
 
-    /**
-     * @param int $day
-     * @param Period[] $periods
-     */
-    private function __construct(int $day, array $periods)
-    {
-        $this->day = $day;
-
-        $this->periods = array_map(function(Period $period) {
-            return $period;
-        }, $periods);
-    }
-
     public static function Monday(array $periods)
     {
         return new static(1, $periods);
@@ -66,9 +53,22 @@ final class DayOfWeek
     }
 
     /**
+     * @param int $day
+     * @param Period[] $periods
+     */
+    private function __construct(int $day, array $periods)
+    {
+        $this->day = $day;
+
+        $this->periods = array_map(function(Period $period) {
+            return $period;
+        }, $periods);
+    }
+
+    /**
      * @todo Name this something better
      */
-    public function hasAPeriodThatIsNow(int $day, Time $time) : bool
+    public function isScheduledAt(int $day, Time $time) : bool
     {
         if($day !== $this->day) {
             return false;

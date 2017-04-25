@@ -26,9 +26,9 @@ final class Schedule implements Test
     private function addDay(DayOfWeek $day)
     {
         //TODO Some validation. Don't add same day twice
-        foreach ($this->days as $current_day) {
-
-        }
+//        foreach ($this->days as $current_day) {
+//
+//        }
 
         $this->days[] = $day;
     }
@@ -39,7 +39,7 @@ final class Schedule implements Test
         $time = Time::fromString($dateTime->format('H:i:s'));
 
         foreach ($this->days as $day) {
-            if($day->hasAPeriodThatIsNow($day_of_week, $time)) {
+            if($day->isScheduledAt($day_of_week, $time)) {
                 return true;
             }
         }
