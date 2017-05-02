@@ -2,7 +2,6 @@
 
 namespace jjok\Scheduler;
 
-
 final class Time
 {
     private $hour;
@@ -39,18 +38,23 @@ final class Time
     {
         return sprintf(
             '%s:%s:%s',
-            str_pad($this->hour, 2, '0', \STR_PAD_LEFT),
-            str_pad($this->minutes, 2, '0', \STR_PAD_LEFT),
-            str_pad($this->seconds, 2, '0', \STR_PAD_LEFT)
+            $this->intToTwoCharString($this->hour),
+            $this->intToTwoCharString($this->minutes),
+            $this->intToTwoCharString($this->seconds)
         );
     }
 
-    public function isBefore(Time $other)
+    private function intToTwoCharString(int $number) : string
+    {
+        return str_pad($number, 2, '0', \STR_PAD_LEFT);
+    }
+
+    public function isBefore(Time $other) : bool
     {
         return $this->toString() < $other->toString();
     }
 
-    public function isAfter(Time $other)
+    public function isAfter(Time $other) : bool
     {
         return $this->toString() > $other->toString();
     }
