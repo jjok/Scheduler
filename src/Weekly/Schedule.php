@@ -2,11 +2,11 @@
 
 namespace jjok\Scheduler\Weekly;
 
-use DateTime;
-use jjok\Scheduler\Schedule as Test;
+use DateTimeInterface as DateTime;
+use jjok\Scheduler\Schedule as BaseSchedule;
 use jjok\Scheduler\Time;
 
-final class Schedule implements Test
+final class Schedule implements BaseSchedule
 {
     /**
      * @var DayOfWeek[]

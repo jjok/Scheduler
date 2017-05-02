@@ -2,13 +2,12 @@
 
 namespace jjok\Scheduler;
 
-use DateTime;
+use DateTimeInterface as DateTime;
 
 interface Schedule
 {
     /**
-     * @param DateTime $dateTime
-     * @return bool
+     * Find out if the schedule is scheduled (?) for the given time.
      */
     public function isOnAt(DateTime $dateTime) : bool;
 }
