@@ -19,78 +19,99 @@ final class DayOfWeekTest extends TestCase
         DayOfWeek::Monday([new \stdClass()]);
     }
 
+    public function testNothingWillBeScheduledIfNoTimePeriodsAreAdded()
+    {
+        $monday = DayOfWeek::Monday([]);
+
+        $this->assertTimeOfDayIsNotScheduled($monday, 1, '00:00:00');
+        $this->assertTimeOfDayIsNotScheduled($monday, 1, '12:21:45');
+        $this->assertTimeOfDayIsNotScheduled($monday, 1, '23:59:59');
+    }
+
     public function testMondayCanBeCreated()
     {
-        $monday = DayOfWeek::Monday([$this->createPeriod()]);
+        $monday = DayOfWeek::Monday([$this->mockPeriod('00:00:00', '23:59:59')]);
 
-        $this->assertFalse($monday->isScheduledAt(7, Time::fromString('23:59:59')));
-        $this->assertTrue($monday->isScheduledAt(1, Time::fromString('00:00:00')));
-        $this->assertTrue($monday->isScheduledAt(1, Time::fromString('23:59:59')));
-        $this->assertFalse($monday->isScheduledAt(2, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($monday, 7, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($monday, 1, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($monday, 1, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($monday, 2, '00:00:00');
     }
 
     public function testTuesdayCanBeCreated()
     {
-        $tuesday = DayOfWeek::Tuesday([$this->createPeriod()]);
+        $tuesday = DayOfWeek::Tuesday([$this->mockPeriod('00:00:01', '23:59:59')]);
 
-        $this->assertFalse($tuesday->isScheduledAt(1, Time::fromString('23:59:59')));
-        $this->assertTrue($tuesday->isScheduledAt(2, Time::fromString('00:00:00')));
-        $this->assertTrue($tuesday->isScheduledAt(2, Time::fromString('23:59:59')));
-        $this->assertFalse($tuesday->isScheduledAt(3, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($tuesday, 1, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($tuesday, 2, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($tuesday, 2, '00:00:01');
+        $this->assertTimeOfDayIsScheduled($tuesday, 2, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($tuesday, 3, '00:00:00');
     }
 
     public function testWednesdayCanBeCreated()
     {
-        $wednesday = DayOfWeek::Wednesday([$this->createPeriod()]);
+        $wednesday = DayOfWeek::Wednesday([$this->mockPeriod('00:00:00', '23:59:58')]);
 
-        $this->assertFalse($wednesday->isScheduledAt(2, Time::fromString('23:59:59')));
-        $this->assertTrue($wednesday->isScheduledAt(3, Time::fromString('00:00:00')));
-        $this->assertTrue($wednesday->isScheduledAt(3, Time::fromString('23:59:59')));
-        $this->assertFalse($wednesday->isScheduledAt(4, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($wednesday, 2, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($wednesday, 3, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($wednesday, 3, '23:59:58');
+        $this->assertTimeOfDayIsNotScheduled($wednesday, 3, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($wednesday, 4, '00:00:00');
     }
 
     public function testThursdayCanBeCreated()
     {
-        $thursday = DayOfWeek::Thursday([$this->createPeriod()]);
+        $thursday = DayOfWeek::Thursday([$this->mockPeriod('00:00:00', '23:59:59')]);
 
-        $this->assertFalse($thursday->isScheduledAt(3, Time::fromString('23:59:59')));
-        $this->assertTrue($thursday->isScheduledAt(4, Time::fromString('00:00:00')));
-        $this->assertTrue($thursday->isScheduledAt(4, Time::fromString('23:59:59')));
-        $this->assertFalse($thursday->isScheduledAt(5, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($thursday, 3, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($thursday, 4, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($thursday, 4, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($thursday, 5, '00:00:00');
     }
 
     public function testFridayCanBeCreated()
     {
-        $friday = DayOfWeek::Friday([$this->createPeriod()]);
+        $friday = DayOfWeek::Friday([$this->mockPeriod('00:00:00', '23:59:59')]);
 
-        $this->assertFalse($friday->isScheduledAt(4, Time::fromString('23:59:59')));
-        $this->assertTrue($friday->isScheduledAt(5, Time::fromString('00:00:00')));
-        $this->assertTrue($friday->isScheduledAt(5, Time::fromString('23:59:59')));
-        $this->assertFalse($friday->isScheduledAt(6, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($friday, 4, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($friday, 5, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($friday, 5, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($friday, 6, '00:00:00');
     }
 
     public function testSaturdayCanBeCreated()
     {
-        $saturday = DayOfWeek::Saturday([$this->createPeriod()]);
+        $saturday = DayOfWeek::Saturday([$this->mockPeriod('00:00:00', '23:59:59')]);
 
-        $this->assertFalse($saturday->isScheduledAt(5, Time::fromString('23:59:59')));
-        $this->assertTrue($saturday->isScheduledAt(6, Time::fromString('00:00:00')));
-        $this->assertTrue($saturday->isScheduledAt(6, Time::fromString('23:59:59')));
-        $this->assertFalse($saturday->isScheduledAt(7, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($saturday, 5, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($saturday, 6, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($saturday, 6, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($saturday, 7, '00:00:00');
     }
 
     public function testSundayCanBeCreated()
     {
-        $sunday = DayOfWeek::Sunday([$this->createPeriod()]);
+        $sunday = DayOfWeek::Sunday([$this->mockPeriod('00:00:00', '23:59:59')]);
 
-        $this->assertFalse($sunday->isScheduledAt(6, Time::fromString('23:59:59')));
-        $this->assertTrue($sunday->isScheduledAt(7, Time::fromString('00:00:00')));
-        $this->assertTrue($sunday->isScheduledAt(7, Time::fromString('23:59:59')));
-        $this->assertFalse($sunday->isScheduledAt(1, Time::fromString('00:00:00')));
+        $this->assertTimeOfDayIsNotScheduled($sunday, 6, '23:59:59');
+        $this->assertTimeOfDayIsScheduled($sunday, 7, '00:00:00');
+        $this->assertTimeOfDayIsScheduled($sunday, 7, '23:59:59');
+        $this->assertTimeOfDayIsNotScheduled($sunday, 1, '00:00:00');
     }
 
-    private function createPeriod()
+    private function mockPeriod(string $start, string $end)
     {
-        return new Period(Time::fromString('00:00:00'), Time::fromString('23:59:59'));
+        return new Period(Time::fromString($start), Time::fromString($end));
+    }
+
+    private function assertTimeOfDayIsScheduled(DayOfWeek $dayOfWeek, int $day, string $time)
+    {
+        $this->assertTrue($dayOfWeek->isScheduledAt($day, Time::fromString($time)));
+    }
+
+    private function assertTimeOfDayIsNotScheduled(DayOfWeek $dayOfWeek, int $day, string $time)
+    {
+        $this->assertFalse($dayOfWeek->isScheduledAt($day, Time::fromString($time)));
     }
 }

@@ -5,8 +5,16 @@ namespace jjok\Scheduler\Weekly;
 use jjok\Scheduler\Period;
 use jjok\Scheduler\Time;
 
-final class DayOfWeek
+class DayOfWeek
 {
+    const MONDAY = 1;
+    const TUESDAY = 2;
+    const WEDNESDAY = 3;
+    const THURSDAY = 4;
+    const FRIDAY = 5;
+    const SATURDAY = 6;
+    const SUNDAY = 7;
+
     /**
      * @var int
      */
@@ -19,37 +27,37 @@ final class DayOfWeek
 
     public static function Monday(array $periods)
     {
-        return new static(1, $periods);
+        return new static(static::MONDAY, $periods);
     }
 
     public static function Tuesday(array $periods)
     {
-        return new static(2, $periods);
+        return new static(static::TUESDAY, $periods);
     }
 
     public static function Wednesday(array $periods)
     {
-        return new static(3, $periods);
+        return new static(static::WEDNESDAY, $periods);
     }
 
     public static function Thursday(array $periods)
     {
-        return new static(4, $periods);
+        return new static(static::THURSDAY, $periods);
     }
 
     public static function Friday(array $periods)
     {
-        return new static(5, $periods);
+        return new static(static::FRIDAY, $periods);
     }
 
     public static function Saturday(array $periods)
     {
-        return new static(6, $periods);
+        return new static(static::SATURDAY, $periods);
     }
 
     public static function Sunday(array $periods)
     {
-        return new static(7, $periods);
+        return new static(static::SUNDAY, $periods);
     }
 
     /**
