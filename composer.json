@@ -8,8 +8,8 @@
             "email": "jonathan@jjok.co.uk"
         }
     ],
-    "require": {
-        "symfony/yaml": "^3.2"
+    "suggest": {
+        "symfony/yaml": "Write schedules in YAML."
     },
     "require-dev": {
         "phpunit/phpunit": "^6.1"
