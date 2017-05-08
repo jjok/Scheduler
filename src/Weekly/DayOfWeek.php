@@ -83,8 +83,8 @@ class DayOfWeek
         }
 
         foreach ($this->periods as $period) {
-//            if($time->isDuring($period)) {
-            if($period->includes($time)) {
+            if($time->isDuring($period)) {
+//            if($period->includes($time)) {
                 return true;
             }
         }

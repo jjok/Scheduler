@@ -59,8 +59,10 @@ final class Time
         return $this->toString() > $other->toString();
     }
 
-//    public function isDuring(Period $period) : bool
-//    {
-//        return $period->contains($this);
-//    }
+    public function isDuring(Period $period) : bool
+    {
+//        return $period->includes($this);
+        return !$this->isBefore($period->getStart()) &&
+               !$this->isAfter($period->getEnd());
+    }
 }

@@ -111,4 +111,61 @@ final class TimeTest extends TestCase
         $this->assertFalse($time1->isBefore($time2));
         $this->assertFalse($time1->isAfter($time2));
     }
+
+    /**
+     * @uses \jjok\Scheduler\Period
+     */
+    public function testTimeIsNotDuringPeriodIfItIsBeforePeriodStart()
+    {
+        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+
+        $time1 = Time::fromString('00:00:00');
+        $time2 = Time::fromString('04:34:10');
+        $time3 = Time::fromString('07:59:59');
+
+        $this->assertTimeIsNotDuringPeriod($time1, $period);
+        $this->assertTimeIsNotDuringPeriod($time2, $period);
+        $this->assertTimeIsNotDuringPeriod($time3, $period);
+    }
+
+    /**
+     * @uses \jjok\Scheduler\Period
+     */
+    public function testTimeIsDuringPeriodIfBetweenStartAndEnd() {
+        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+
+        $time1 = Time::fromString('08:00:00');
+        $time2 = Time::fromString('08:34:01');
+        $time3 = Time::fromString('08:59:59');
+        $time4 = Time::fromString('09:00:00');
+
+        $this->assertTimeIsDuringPeriod($time1, $period);
+        $this->assertTimeIsDuringPeriod($time2, $period);
+        $this->assertTimeIsDuringPeriod($time3, $period);
+        $this->assertTimeIsDuringPeriod($time4, $period);
+    }
+
+    /**
+     * @uses \jjok\Scheduler\Period
+     */
+    public function testTimeIsNotDuringPeriodIfItIsAfterPeriodEnd()
+    {
+        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+
+        $time1 = Time::fromString('09:00:01');
+        $time2 = Time::fromString('12:00:00');
+        $time3 = Time::fromString('23:59:59');
+
+        $this->assertTimeIsNotDuringPeriod($time1, $period);
+        $this->assertTimeIsNotDuringPeriod($time2, $period);
+        $this->assertTimeIsNotDuringPeriod($time3, $period);
+    }
+
+    private function assertTimeIsDuringPeriod(Time $time, Period $period) {
+        $this->assertTrue($time->isDuring($period));
+    }
+
+    private function assertTimeIsNotDuringPeriod(Time $time, Period $period) {
+        $this->assertFalse($time->isDuring($period));
+    }
 }

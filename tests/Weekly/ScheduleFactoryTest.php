@@ -64,6 +64,6 @@ final class ScheduleFactoryTest extends TestCase
 
     private function createDateTime(string $time)
     {
-        return \DateTime::createFromFormat('Y-m-d H:i:s', $time);
+        return \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $time);
     }
 }

@@ -105,11 +105,13 @@ final class DayOfWeekTest extends TestCase
         return new Period(Time::fromString($start), Time::fromString($end));
     }
 
+    //TODO Name this better
     private function assertTimeOfDayIsScheduled(DayOfWeek $dayOfWeek, int $day, string $time)
     {
         $this->assertTrue($dayOfWeek->isScheduledAt($day, Time::fromString($time)));
     }
 
+    //TODO Name this better
     private function assertTimeOfDayIsNotScheduled(DayOfWeek $dayOfWeek, int $day, string $time)
     {
         $this->assertFalse($dayOfWeek->isScheduledAt($day, Time::fromString($time)));

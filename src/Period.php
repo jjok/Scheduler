@@ -20,17 +20,17 @@ class Period
         $this->end = $end;
     }
 
-//    public function getStart() {
-//        return $this->start;
-//    }
-//
-//    public function getEnd() {
-//        return $this->end;
-//    }
-
-    public function includes(Time $time)
-    {
-        return !$time->isBefore($this->start) &&
-               !$time->isAfter($this->end);
+    public function getStart() {
+        return $this->start;
     }
+
+    public function getEnd() {
+        return $this->end;
+    }
+
+//    public function includes(Time $time)
+//    {
+//        return !$time->isBefore($this->start) &&
+//               !$time->isAfter($this->end);
+//    }
 }
