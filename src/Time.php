@@ -2,6 +2,8 @@
 
 namespace jjok\Scheduler;
 
+use DateTimeInterface as DateTime;
+
 final class Time
 {
     private $hour;
@@ -32,6 +34,11 @@ final class Time
         list($hour, $minutes, $seconds) = sscanf($time, '%u:%u:%u');
 
         return new static($hour, $minutes, $seconds);
+    }
+
+    public static function fromDateTime(DateTime $dateTime) : Time
+    {
+        return Time::fromString($dateTime->format('H:i:s'));
     }
 
     public function toString() : string

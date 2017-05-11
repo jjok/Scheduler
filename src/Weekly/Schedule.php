@@ -3,10 +3,10 @@
 namespace jjok\Scheduler\Weekly;
 
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\Schedule as BaseSchedule;
+use jjok\Scheduler\Schedule as ScheduleStrategy;
 use jjok\Scheduler\Time;
 
-final class Schedule implements BaseSchedule
+final class Schedule implements ScheduleStrategy
 {
     /**
      * @var DayOfWeek[]
@@ -36,7 +36,7 @@ final class Schedule implements BaseSchedule
     public function isOnAt(DateTime $dateTime) : bool
     {
         $day_of_week = $dateTime->format('N');
-        $time = Time::fromString($dateTime->format('H:i:s'));
+        $time = Time::fromDateTime($dateTime);
 
         foreach ($this->days as $day) {
             if($day->isScheduledAt($day_of_week, $time)) {
