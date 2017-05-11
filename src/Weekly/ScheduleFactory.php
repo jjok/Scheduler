@@ -3,11 +3,12 @@
 namespace jjok\Scheduler\Weekly;
 
 use jjok\Scheduler\Period;
+use jjok\Scheduler\Schedule as ScheduleStrategy;
 use jjok\Scheduler\Time;
 
-final class ScheduleFactory
+final class ScheduleFactory implements \jjok\Scheduler\ScheduleFactory
 {
-    public function create(array $config) : Schedule
+    public function create(array $config) : ScheduleStrategy
     {
         $week = [];
 
