@@ -4,10 +4,10 @@ namespace jjok\Scheduler;
 
 use DateTimeInterface as DateTime;
 
-interface Schedule
+interface SwitchStrategy
 {
     /**
-     * Find out if the schedule is scheduled (?) for the given time.
+     * Find out if the switch should be on at the given time.
      */
     public function isOnAt(DateTime $dateTime) : bool;
 }

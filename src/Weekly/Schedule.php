@@ -3,10 +3,10 @@
 namespace jjok\Scheduler\Weekly;
 
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\Schedule as ScheduleStrategy;
+use jjok\Scheduler\SwitchStrategy;
 use jjok\Scheduler\Time;
 
-final class Schedule implements ScheduleStrategy
+final class Schedule implements SwitchStrategy
 {
     /**
      * @var DayOfWeek[]

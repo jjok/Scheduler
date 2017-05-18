@@ -7,7 +7,7 @@ interface ScheduleFactory
     /**
      * Create a schedule from a configuration.
      * @param array $config
-     * @return Schedule
+     * @return SwitchStrategy
      */
-    public function create(array $config) : Schedule;
+    public function create(array $config) : SwitchStrategy;
 }

@@ -3,7 +3,7 @@
 namespace jjok\Scheduler\Weekly;
 
 use jjok\Scheduler\Period;
-use jjok\Scheduler\Schedule as ScheduleStrategy;
+use jjok\Scheduler\SwitchStrategy as ScheduleStrategy;
 use jjok\Scheduler\Time;
 
 final class ScheduleFactory implements \jjok\Scheduler\ScheduleFactory
