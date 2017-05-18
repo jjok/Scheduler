@@ -3,6 +3,7 @@
 namespace jjok\Scheduler\Weekly;
 
 use jjok\Scheduler\Period;
+use jjok\Scheduler\Strategy\WeeklySchedule;
 use jjok\Scheduler\SwitchStrategy as ScheduleStrategy;
 use jjok\Scheduler\Time;
 
@@ -22,7 +23,7 @@ final class ScheduleFactory implements \jjok\Scheduler\ScheduleFactory
             $week[] = DayOfWeek::$dayName($periods);
         }
 
-        return new Schedule($week);
+        return new WeeklySchedule($week);
     }
 
     private function createPeriod(string $times) : Period

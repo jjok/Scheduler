@@ -2,13 +2,14 @@
 
 namespace jjok\Scheduler\Weekly;
 
+use jjok\Scheduler\Strategy\WeeklySchedule;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \jjok\Scheduler\Weekly\ScheduleFactory
  * @uses \jjok\Scheduler\Period
  * @uses \jjok\Scheduler\Time
- * @uses \jjok\Scheduler\Weekly\Schedule
+ * @uses \jjok\Scheduler\Strategy\WeeklySchedule
  */
 final class ScheduleFactoryTest extends TestCase
 {
@@ -55,7 +56,7 @@ final class ScheduleFactoryTest extends TestCase
 
         $schedule = $factory->create($config);
 
-        $this->assertInstanceOf(Schedule::class, $schedule);
+        $this->assertInstanceOf(WeeklySchedule::class, $schedule);
         $this->assertTrue($schedule->isOnAt($this->createDateTime('2017-04-17 12:00:00')));
         $this->assertFalse($schedule->isOnAt($this->createDateTime('2017-04-17 13:00:01')));
         $this->assertTrue($schedule->isOnAt($this->createDateTime('2017-04-23 01:00:00')));

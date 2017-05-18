@@ -1,11 +1,10 @@
 <?php
 
-namespace jjok\Scheduler\Daily;
+namespace jjok\Scheduler\Strategy;
 
-use jjok\Scheduler\Strategy\DailySchedule;
 use PHPUnit\Framework\TestCase;
 
-final class ScheduleTest extends TestCase
+final class DailyScheduleTest extends TestCase
 {
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
     {

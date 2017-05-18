@@ -1,25 +1,25 @@
 <?php
 
-namespace jjok\Scheduler\Weekly;
+namespace jjok\Scheduler\Strategy;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Weekly\Schedule
+ * @covers \jjok\Scheduler\Strategy\WeeklySchedule
  * @uses \jjok\Scheduler\Weekly\DayOfWeek
  */
-final class ScheduleTest extends TestCase
+final class WeeklyScheduleTest extends TestCase
 {
     public function testNothingIsScheduledIfNoDaysAreAdded()
     {
-        $schedule = new Schedule([]);
+        $schedule = new WeeklySchedule([]);
 
         $this->assertFalse($schedule->isOnAt(new \DateTime()));
     }
 
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
     {
-        $schedule = new Schedule([
+        $schedule = new WeeklySchedule([
             $this->unscheduledDay(),
             $this->unscheduledDay(),
             $this->unscheduledDay(),
@@ -29,16 +29,16 @@ final class ScheduleTest extends TestCase
     }
 
     public function testTimeIsScheduledIfScheduleContainsADayThatIsScheduled() {
-        $schedule = new Schedule([
+        $schedule = new WeeklySchedule([
             $this->scheduledDay(),
         ]);
 
         $this->assertTrue($schedule->isOnAt($this->anyDate()));
     }
 
-    public function testSomething()
+    public function testOnlyOneDayHasToBeScheduled()
     {
-        $schedule = new Schedule([
+        $schedule = new WeeklySchedule([
             $this->unscheduledDay(),
             $this->unscheduledDay(),
             $this->unscheduledDay(),
