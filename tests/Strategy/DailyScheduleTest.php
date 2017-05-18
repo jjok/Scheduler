@@ -17,7 +17,7 @@ final class DailyScheduleTest extends TestCase
     {
         $strategy = new DailySchedule([]);
 
-        $this->assertFalse($strategy->isOnAt(new \DateTime()));
+        $this->assertIsOffAt('now', $strategy);
     }
 
     public function testIsNotOnBetweenScheduledTimePeriods()
@@ -37,6 +37,10 @@ final class DailyScheduleTest extends TestCase
         $this->assertIsOffAt('23:59:59', $strategy);
     }
 
+    private function assertIsOffAt(string $time, DailySchedule $strategy)
+    {
+        $this->assertFalse($strategy->isOnAt(new \DateTimeImmutable($time)));
+    }
 
     public function testIsOnAtScheduledTimePeriods()
     {
@@ -53,11 +57,6 @@ final class DailyScheduleTest extends TestCase
         $this->assertIsOnAt('13:25:01', $strategy);
         $this->assertIsOnAt('19:01:59', $strategy);
         $this->assertIsOnAt('23:20:19', $strategy);
-    }
-
-    private function assertIsOffAt(string $time, DailySchedule $strategy)
-    {
-        $this->assertFalse($strategy->isOnAt(new \DateTimeImmutable($time)));
     }
 
     private function assertIsOnAt(string $time, DailySchedule $strategy)
