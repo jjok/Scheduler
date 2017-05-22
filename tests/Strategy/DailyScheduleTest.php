@@ -4,14 +4,13 @@ namespace jjok\Switches\Strategy;
 
 use jjok\Switches\Period;
 use jjok\Switches\Time;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \jjok\Switches\Strategy\DailySchedule
  * @uses \jjok\Switches\Period
  * @uses \jjok\Switches\Time
  */
-final class DailyScheduleTest extends TestCase
+final class DailyScheduleTest extends AbstractStrategyTest
 {
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
     {
@@ -37,11 +36,6 @@ final class DailyScheduleTest extends TestCase
         $this->assertIsOffAt('23:59:59', $strategy);
     }
 
-    private function assertIsOffAt(string $time, DailySchedule $strategy)
-    {
-        $this->assertFalse($strategy->isOnAt(new \DateTimeImmutable($time)));
-    }
-
     public function testIsOnAtScheduledTimePeriods()
     {
         $strategy = new DailySchedule([
@@ -57,11 +51,6 @@ final class DailyScheduleTest extends TestCase
         $this->assertIsOnAt('13:25:01', $strategy);
         $this->assertIsOnAt('19:01:59', $strategy);
         $this->assertIsOnAt('23:20:19', $strategy);
-    }
-
-    private function assertIsOnAt(string $time, DailySchedule $strategy)
-    {
-        $this->assertTrue($strategy->isOnAt(new \DateTimeImmutable($time)));
     }
 
     private function period(string $start, string $end)
