@@ -1,10 +1,10 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use DateInterval as Interval;
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\SwitchStrategy;
+use jjok\Switches\SwitchStrategy;
 
 final class FixedInterval implements SwitchStrategy
 {

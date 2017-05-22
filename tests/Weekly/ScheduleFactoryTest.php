@@ -1,15 +1,15 @@
 <?php
 
-namespace jjok\Scheduler\Weekly;
+namespace jjok\Switches\Weekly;
 
-use jjok\Scheduler\Strategy\WeeklySchedule;
+use jjok\Switches\Strategy\WeeklySchedule;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Weekly\ScheduleFactory
- * @uses \jjok\Scheduler\Period
- * @uses \jjok\Scheduler\Time
- * @uses \jjok\Scheduler\Strategy\WeeklySchedule
+ * @covers \jjok\Switches\Weekly\ScheduleFactory
+ * @uses \jjok\Switches\Period
+ * @uses \jjok\Switches\Time
+ * @uses \jjok\Switches\Strategy\WeeklySchedule
  */
 final class ScheduleFactoryTest extends TestCase
 {

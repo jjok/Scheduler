@@ -3,7 +3,7 @@
 spl_autoload_register(function(string $class) {
     $file = sprintf(
         'src/%s.php',
-        str_replace(['jjok\Scheduler\\', '\\'], ['', '/'], $class)
+        str_replace(['jjok\Switches\\', '\\'], ['', '/'], $class)
     );
 
     if(file_exists($file)) {

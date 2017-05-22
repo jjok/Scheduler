@@ -1,11 +1,11 @@
 <?php
 
-namespace jjok\Scheduler;
+namespace jjok\Switches;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Time
+ * @covers \jjok\Switches\Time
  */
 final class TimeTest extends TestCase
 {
@@ -113,7 +113,7 @@ final class TimeTest extends TestCase
     }
 
     /**
-     * @uses \jjok\Scheduler\Period
+     * @uses \jjok\Switches\Period
      */
     public function testTimeIsNotDuringPeriodIfItIsBeforePeriodStart()
     {
@@ -129,7 +129,7 @@ final class TimeTest extends TestCase
     }
 
     /**
-     * @uses \jjok\Scheduler\Period
+     * @uses \jjok\Switches\Period
      */
     public function testTimeIsDuringPeriodIfBetweenStartAndEnd() {
         $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
@@ -146,7 +146,7 @@ final class TimeTest extends TestCase
     }
 
     /**
-     * @uses \jjok\Scheduler\Period
+     * @uses \jjok\Switches\Period
      */
     public function testTimeIsNotDuringPeriodIfItIsAfterPeriodEnd()
     {

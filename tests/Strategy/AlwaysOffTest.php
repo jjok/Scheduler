@@ -1,11 +1,11 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Strategy\AlwaysOff
+ * @covers \jjok\Switches\Strategy\AlwaysOff
  */
 final class AlwaysOffTest extends TestCase
 {

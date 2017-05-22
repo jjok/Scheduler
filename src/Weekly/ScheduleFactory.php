@@ -1,13 +1,13 @@
 <?php
 
-namespace jjok\Scheduler\Weekly;
+namespace jjok\Switches\Weekly;
 
-use jjok\Scheduler\Period;
-use jjok\Scheduler\Strategy\WeeklySchedule;
-use jjok\Scheduler\SwitchStrategy as ScheduleStrategy;
-use jjok\Scheduler\Time;
+use jjok\Switches\Period;
+use jjok\Switches\Strategy\WeeklySchedule;
+use jjok\Switches\SwitchStrategy as ScheduleStrategy;
+use jjok\Switches\Time;
 
-final class ScheduleFactory implements \jjok\Scheduler\ScheduleFactory
+final class ScheduleFactory implements \jjok\Switches\ScheduleFactory
 {
     public function create(array $config) : ScheduleStrategy
     {

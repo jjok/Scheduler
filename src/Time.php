@@ -1,6 +1,6 @@
 <?php
 
-namespace jjok\Scheduler;
+namespace jjok\Switches;
 
 use DateTimeInterface as DateTime;
 

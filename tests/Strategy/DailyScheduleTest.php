@@ -1,15 +1,15 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
-use jjok\Scheduler\Period;
-use jjok\Scheduler\Time;
+use jjok\Switches\Period;
+use jjok\Switches\Time;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Strategy\DailySchedule
- * @uses \jjok\Scheduler\Period
- * @uses \jjok\Scheduler\Time
+ * @covers \jjok\Switches\Strategy\DailySchedule
+ * @uses \jjok\Switches\Period
+ * @uses \jjok\Switches\Time
  */
 final class DailyScheduleTest extends TestCase
 {

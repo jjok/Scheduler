@@ -1,15 +1,15 @@
 <?php
 
-namespace jjok\Scheduler\Weekly;
+namespace jjok\Switches\Weekly;
 
-use jjok\Scheduler\Period;
-use jjok\Scheduler\Time;
+use jjok\Switches\Period;
+use jjok\Switches\Time;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Weekly\DayOfWeek
- * @uses \jjok\Scheduler\Period
- * @uses \jjok\Scheduler\Time
+ * @covers \jjok\Switches\Weekly\DayOfWeek
+ * @uses \jjok\Switches\Period
+ * @uses \jjok\Switches\Time
  */
 final class DayOfWeekTest extends TestCase
 {

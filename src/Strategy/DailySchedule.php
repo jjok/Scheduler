@@ -1,11 +1,11 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\Period;
-use jjok\Scheduler\SwitchStrategy;
-use jjok\Scheduler\Time;
+use jjok\Switches\Period;
+use jjok\Switches\SwitchStrategy;
+use jjok\Switches\Time;
 
 final class DailySchedule implements SwitchStrategy
 {

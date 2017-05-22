@@ -1,9 +1,9 @@
-Scheduler
+Switches
 =========
 
 An emulation of my central heating controller.
 
-[![Build Status](https://travis-ci.org/jjok/Scheduler.svg?branch=master)](https://travis-ci.org/jjok/Scheduler)
+[![Build Status](https://travis-ci.org/jjok/Switches.svg?branch=master)](https://travis-ci.org/jjok/Switches)
 
 
 Start with a configuration file, maybe as YAML:
@@ -31,7 +31,7 @@ $config = Yaml::parse(file_get_contents('schedule.yml'));
 Load the file into a schedule:
 
 ```
-use jjok\Scheduler\Weekly\ScheduleFactory as WeeklyScheduleFactory;
+use jjok\Switches\Weekly\ScheduleFactory as WeeklyScheduleFactory;
 
 $config = array(
     'Monday' => array(

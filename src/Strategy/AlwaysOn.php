@@ -1,9 +1,9 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\SwitchStrategy;
+use jjok\Switches\SwitchStrategy;
 
 final class AlwaysOn implements SwitchStrategy
 {

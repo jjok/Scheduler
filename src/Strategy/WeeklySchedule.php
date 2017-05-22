@@ -1,11 +1,11 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use DateTimeInterface as DateTime;
-use jjok\Scheduler\SwitchStrategy;
-use jjok\Scheduler\Time;
-use jjok\Scheduler\Weekly\DayOfWeek;
+use jjok\Switches\SwitchStrategy;
+use jjok\Switches\Time;
+use jjok\Switches\Weekly\DayOfWeek;
 
 final class WeeklySchedule implements SwitchStrategy
 {

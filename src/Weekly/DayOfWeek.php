@@ -1,9 +1,9 @@
 <?php
 
-namespace jjok\Scheduler\Weekly;
+namespace jjok\Switches\Weekly;
 
-use jjok\Scheduler\Period;
-use jjok\Scheduler\Time;
+use jjok\Switches\Period;
+use jjok\Switches\Time;
 
 class DayOfWeek
 {

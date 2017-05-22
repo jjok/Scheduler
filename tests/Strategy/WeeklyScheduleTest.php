@@ -1,12 +1,12 @@
 <?php
 
-namespace jjok\Scheduler\Strategy;
+namespace jjok\Switches\Strategy;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Strategy\WeeklySchedule
- * @uses \jjok\Scheduler\Weekly\DayOfWeek
+ * @covers \jjok\Switches\Strategy\WeeklySchedule
+ * @uses \jjok\Switches\Weekly\DayOfWeek
  */
 final class WeeklyScheduleTest extends TestCase
 {
@@ -67,7 +67,7 @@ final class WeeklyScheduleTest extends TestCase
 
     private function mockDayOfWeek(bool $isScheduled)
     {
-        $day = $this->getMockBuilder('jjok\Scheduler\Weekly\DayOfWeek')
+        $day = $this->getMockBuilder('jjok\Switches\Weekly\DayOfWeek')
             ->disableOriginalConstructor()
             ->getMock();
 

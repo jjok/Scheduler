@@ -1,12 +1,12 @@
 <?php
 
-namespace jjok\Scheduler;
+namespace jjok\Switches;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \jjok\Scheduler\Period
- * @uses \jjok\Scheduler\Time
+ * @covers \jjok\Switches\Period
+ * @uses \jjok\Switches\Time
  */
 final class PeriodTest extends TestCase
 {
