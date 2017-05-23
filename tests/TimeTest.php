@@ -87,6 +87,15 @@ final class TimeTest extends TestCase
         $this->assertSame('01:04:06', $time2->toString());
     }
 
+    public function testTimeCanBeCreatedFromDateTime()
+    {
+        $time1 = Time::fromDateTime(\DateTimeImmutable::createFromFormat('H:i:s', '12:34:56'));
+        $this->assertSame('12:34:56', $time1->toString());
+
+        $time2 = Time::fromDateTime(\DateTimeImmutable::createFromFormat('H:i:s', '00:00:00'));
+        $this->assertSame('00:00:00', $time2->toString());
+    }
+
     public function testOneTimeCanBeforeAnother()
     {
         $time1 = Time::fromString('12:00:00');

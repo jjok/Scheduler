@@ -25,8 +25,7 @@ final class FixedInterval implements SwitchStrategy
     {
         $this->onFor = $onFor;
         $this->offFor = $offFor;
-        $this->status = $initial;
-        $this->logTime();
+        $this->setStatus($initial);
     }
 
     public function isOnAt(DateTime $dateTime) : bool
@@ -34,11 +33,16 @@ final class FixedInterval implements SwitchStrategy
         $interval = $this->status ? $this->onFor : $this->offFor;
 
         if($this->statusChangedAt->add($interval) < $dateTime) {
-            $this->status = !$this->status;
-            $this->logTime();
+            $this->setStatus(!$this->status);
         }
 
         return $this->status;
+    }
+
+    private function setStatus(int $status)
+    {
+        $this->status = $status;
+        $this->logTime();
     }
 
     private function logTime()
