@@ -36,11 +36,11 @@ final class WeeklySchedule implements SwitchStrategy
 
     public function isOnAt(DateTime $dateTime) : bool
     {
-        $day_of_week = $dateTime->format('N');
+        $dayOfWeek = $dateTime->format('N');
         $time = Time::fromDateTime($dateTime);
 
         foreach ($this->days as $day) {
-            if($day->isScheduledAt($day_of_week, $time)) {
+            if($day->isScheduledAt($dayOfWeek, $time)) {
                 return true;
             }
         }

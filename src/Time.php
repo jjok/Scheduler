@@ -38,7 +38,7 @@ final class Time
 
     public static function fromDateTime(DateTime $dateTime) : Time
     {
-        return Time::fromString($dateTime->format('H:i:s'));
+        return static::fromString($dateTime->format('H:i:s'));
     }
 
     public function toString() : string
@@ -68,7 +68,6 @@ final class Time
 
     public function isDuring(Period $period) : bool
     {
-//        return $period->includes($this);
         return !$this->isBefore($period->getStart()) &&
                !$this->isAfter($period->getEnd());
     }
