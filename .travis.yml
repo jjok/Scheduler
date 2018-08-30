@@ -2,7 +2,8 @@
 
 language: php
 php:
-  - '7.0'
   - '7.1'
-#  - hhvm
+  - '7.2'
   - nightly
+env:
+  CODECLIMATE_REPO_TOKEN: ed8f7e72d6932e3c8fab20fcd8675dbd40805d4953a80199082292cf51ce29c3

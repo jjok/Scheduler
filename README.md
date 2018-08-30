@@ -4,9 +4,11 @@ Switches
 An emulation of my central heating controller.
 
 [![Build Status](https://travis-ci.org/jjok/Switches.svg?branch=master)](https://travis-ci.org/jjok/Switches)
-
 [![Code Climate](https://codeclimate.com/github/jjok/Switches/badges/gpa.svg)](https://codeclimate.com/github/jjok/Switches)
 
+
+TODO Update examples
+--------------------
 
 Start with a configuration file, maybe as YAML:
 
