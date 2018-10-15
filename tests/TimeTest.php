@@ -170,11 +170,13 @@ final class TimeTest extends TestCase
         $this->assertTimeIsNotDuringPeriod($time3, $period);
     }
 
-    private function assertTimeIsDuringPeriod(Time $time, Period $period) {
+    private function assertTimeIsDuringPeriod(Time $time, Period $period)
+    {
         $this->assertTrue($time->isDuring($period));
     }
 
-    private function assertTimeIsNotDuringPeriod(Time $time, Period $period) {
+    private function assertTimeIsNotDuringPeriod(Time $time, Period $period)
+    {
         $this->assertFalse($time->isDuring($period));
     }
 }

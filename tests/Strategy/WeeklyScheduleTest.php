@@ -2,17 +2,19 @@
 
 namespace jjok\Switches\Strategy;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \jjok\Switches\Strategy\WeeklySchedule
  * @uses \jjok\Switches\Weekly\DayOfWeek
  */
-final class WeeklyScheduleTest extends AbstractStrategyTest
+final class WeeklyScheduleTest extends TestCase
 {
     public function testNothingIsScheduledIfNoDaysAreAdded()
     {
         $schedule = new WeeklySchedule([]);
 
-        $this->assertIsOffAt('now', $schedule);
+        assertIsOffAt('now', $schedule);
     }
 
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
@@ -23,7 +25,7 @@ final class WeeklyScheduleTest extends AbstractStrategyTest
             $this->unscheduledDay(),
         ]);
 
-        $this->assertIsOffAt('now', $schedule);
+        assertIsOffAt('now', $schedule);
     }
 
     public function testTimeIsScheduledIfScheduleContainsADayThatIsScheduled() {
@@ -31,7 +33,7 @@ final class WeeklyScheduleTest extends AbstractStrategyTest
             $this->scheduledDay(),
         ]);
 
-        $this->assertIsOnAt('now', $schedule);
+        assertIsOnAt('now', $schedule);
     }
 
     public function testOnlyOneDayHasToBeScheduled()
@@ -44,7 +46,7 @@ final class WeeklyScheduleTest extends AbstractStrategyTest
             $this->unscheduledDay(),
         ]);
 
-        $this->assertIsOnAt('now', $schedule);
+        assertIsOnAt('now', $schedule);
     }
 
     private function scheduledDay()

@@ -4,19 +4,20 @@ namespace jjok\Switches\Strategy;
 
 use jjok\Switches\Period;
 use jjok\Switches\Time;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \jjok\Switches\Strategy\DailySchedule
  * @uses \jjok\Switches\Period
  * @uses \jjok\Switches\Time
  */
-final class DailyScheduleTest extends AbstractStrategyTest
+final class DailyScheduleTest extends TestCase
 {
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
     {
         $strategy = new DailySchedule([]);
 
-        $this->assertIsOffAt('now', $strategy);
+        assertIsOffAt('now', $strategy);
     }
 
     public function testIsNotOnBetweenScheduledTimePeriods()
@@ -27,13 +28,13 @@ final class DailyScheduleTest extends AbstractStrategyTest
             $this->period('19:01:59', '23:20:19'),
         ]);
 
-        $this->assertIsOffAt('00:00:00', $strategy);
-        $this->assertIsOffAt('05:10:00', $strategy);
-        $this->assertIsOffAt('06:34:22', $strategy);
-        $this->assertIsOffAt('12:00:22', $strategy);
-        $this->assertIsOffAt('19:01:58', $strategy);
-        $this->assertIsOffAt('23:20:20', $strategy);
-        $this->assertIsOffAt('23:59:59', $strategy);
+        assertIsOffAt('00:00:00', $strategy);
+        assertIsOffAt('05:10:00', $strategy);
+        assertIsOffAt('06:34:22', $strategy);
+        assertIsOffAt('12:00:22', $strategy);
+        assertIsOffAt('19:01:58', $strategy);
+        assertIsOffAt('23:20:20', $strategy);
+        assertIsOffAt('23:59:59', $strategy);
     }
 
     public function testIsOnAtScheduledTimePeriods()
@@ -44,16 +45,16 @@ final class DailyScheduleTest extends AbstractStrategyTest
             $this->period('19:01:59', '23:20:19'),
         ]);
 
-        $this->assertIsOnAt('06:34:23', $strategy);
-        $this->assertIsOnAt('10:30:12', $strategy);
-        $this->assertIsOnAt('12:00:21', $strategy);
-        $this->assertIsOnAt('13:00:00', $strategy);
-        $this->assertIsOnAt('13:25:01', $strategy);
-        $this->assertIsOnAt('19:01:59', $strategy);
-        $this->assertIsOnAt('23:20:19', $strategy);
+        assertIsOnAt('06:34:23', $strategy);
+        assertIsOnAt('10:30:12', $strategy);
+        assertIsOnAt('12:00:21', $strategy);
+        assertIsOnAt('13:00:00', $strategy);
+        assertIsOnAt('13:25:01', $strategy);
+        assertIsOnAt('19:01:59', $strategy);
+        assertIsOnAt('23:20:19', $strategy);
     }
 
-    private function period(string $start, string $end)
+    private function period(string $start, string $end) : Period
     {
         return new Period(
             Time::fromString($start),

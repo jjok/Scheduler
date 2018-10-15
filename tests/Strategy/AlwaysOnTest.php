@@ -2,22 +2,35 @@
 
 namespace jjok\Switches\Strategy;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @covers \jjok\Switches\Strategy\AlwaysOn
  */
-final class AlwaysOnTest extends AbstractStrategyTest
+final class AlwaysOnTest extends TestCase
 {
-    public function testAlwaysOnIsAlwaysOn()
+    /**
+     * @test
+     * @dataProvider timeProvider
+     */
+    public function it_is_always_on(string $time)
     {
         $strategy = new AlwaysOn();
 
-        $this->assertIsOnAt('tomorrow', $strategy);
-        $this->assertIsOnAt('+12 hours', $strategy);
-        $this->assertIsOnAt('+5 minutes', $strategy);
-        $this->assertIsOnAt('now', $strategy);
-        $this->assertIsOnAt('5 minutes ago', $strategy);
-        $this->assertIsOnAt('50 minutes ago', $strategy);
-        $this->assertIsOnAt('3 hours ago', $strategy);
-        $this->assertIsOnAt('yesterday', $strategy);
+        assertIsOnAt($time, $strategy);
+    }
+
+    public function timeProvider() : array
+    {
+        return [
+            ['tomorrow'      ],
+            ['+12 hours'     ],
+            ['+5 minutes'    ],
+            ['now'           ],
+            ['5 minutes ago' ],
+            ['50 minutes ago'],
+            ['3 hours ago'   ],
+            ['yesterday'     ],
+        ];
     }
 }
