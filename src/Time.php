@@ -72,7 +72,7 @@ final class Time
 
     public function isDuring(Period $period) : bool
     {
-        return !$this->isBefore($period->getStart()) &&
-               !$this->isAfter($period->getEnd());
+        return !$this->isBefore($period->start()) &&
+               !$this->isAfter($period->end());
     }
 }
