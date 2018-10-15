@@ -3,6 +3,7 @@
 namespace jjok\Switches;
 
 use DateTimeInterface as DateTime;
+use InvalidArgumentException;
 
 final class Time
 {
@@ -10,60 +11,63 @@ final class Time
     private $minutes;
     private $seconds;
 
+    public static function fromDateTime(DateTime $dateTime) : Time
+    {
+        return self::fromString($dateTime->format('H:i:s'));
+    }
+
+    public static function fromString(string $time) : Time
+    {
+        [$hour, $minutes, $seconds] = sscanf($time, '%u:%u:%u');
+
+        return new self($hour, $minutes, $seconds);
+    }
+
     public function __construct(int $hour, int $minutes = 0, int $seconds = 0)
     {
-        if($hour < 0 || $hour > 23) {
-            throw new \InvalidArgumentException('Hour must be between 0 and 23.');
-        }
-
-        if($minutes < 0 || $minutes > 59) {
-            throw new \InvalidArgumentException('Minutes must be between 0 and 59.');
-        }
-
-        if($seconds < 0 || $seconds > 59) {
-            throw new \InvalidArgumentException('Seconds must be between 0 and 59.');
-        }
+        $this->assertHourIsValid($hour);
+        $this->assertMinutesAreValid($minutes);
+        $this->assertSecondsAreValid($seconds);
 
         $this->hour = $hour;
         $this->minutes = $minutes;
         $this->seconds = $seconds;
     }
 
-    public static function fromString(string $time) : Time
+    private function assertHourIsValid(int $hour) : void
     {
-        list($hour, $minutes, $seconds) = sscanf($time, '%u:%u:%u');
-
-        return new static($hour, $minutes, $seconds);
+        if($hour < 0 || $hour > 23) {
+            throw new InvalidArgumentException('Hour must be between 0 and 23.');
+        }
     }
 
-    public static function fromDateTime(DateTime $dateTime) : Time
+    private function assertMinutesAreValid(int $minutes) : void
     {
-        return static::fromString($dateTime->format('H:i:s'));
+        if($minutes < 0 || $minutes > 59) {
+            throw new InvalidArgumentException('Minutes must be between 0 and 59.');
+        }
+    }
+
+    private function assertSecondsAreValid(int $seconds) : void
+    {
+        if($seconds < 0 || $seconds > 59) {
+            throw new InvalidArgumentException('Seconds must be between 0 and 59.');
+        }
     }
 
     public function toString() : string
     {
-        return sprintf(
-            '%s:%s:%s',
-            $this->intToTwoCharString($this->hour),
-            $this->intToTwoCharString($this->minutes),
-            $this->intToTwoCharString($this->seconds)
-        );
+        return sprintf('%02s:%02s:%02s', $this->hour, $this->minutes, $this->seconds);
     }
 
-    private function intToTwoCharString(int $number) : string
+    public function isBefore(Time $that) : bool
     {
-        return str_pad($number, 2, '0', \STR_PAD_LEFT);
+        return $this->toString() < $that->toString();
     }
 
-    public function isBefore(Time $other) : bool
+    public function isAfter(Time $that) : bool
     {
-        return $this->toString() < $other->toString();
-    }
-
-    public function isAfter(Time $other) : bool
-    {
-        return $this->toString() > $other->toString();
+        return $this->toString() > $that->toString();
     }
 
     public function isDuring(Period $period) : bool
