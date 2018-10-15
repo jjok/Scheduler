@@ -1,5 +1,6 @@
 {
     "name": "jjok/switches",
+    "description": "An emulation of my central heating controller",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,10 +12,13 @@
     "suggest": {
         "symfony/yaml": "Write schedules in YAML."
     },
-    "require-dev": {
-        "phpunit/phpunit": "^6.1"
-    },
     "autoload": {
         "psr-4": {"jjok\\Switches\\": "src/"}
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload-dev": {
+        "files": ["tests/functions.php"]
     }
 }
