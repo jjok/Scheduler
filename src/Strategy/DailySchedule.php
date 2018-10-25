@@ -7,6 +7,8 @@ use jjok\Switches\Period;
 use jjok\Switches\SwitchStrategy;
 use jjok\Switches\Time;
 
+use function array_walk;
+
 final class DailySchedule implements SwitchStrategy
 {
     /**
@@ -16,12 +18,10 @@ final class DailySchedule implements SwitchStrategy
 
     public function __construct(array $periods)
     {
-        foreach($periods as $period) {
-            $this->addPeriod($period);
-        }
+        array_walk($periods, [$this, 'addPeriod']);
     }
 
-    private function addPeriod(Period $period)
+    private function addPeriod(Period $period) : void
     {
         $this->periods[] = $period;
     }
@@ -31,7 +31,6 @@ final class DailySchedule implements SwitchStrategy
         $time = Time::fromDateTime($dateTime);
 
         foreach ($this->periods as $period) {
-//            if($period->includes($time)) {
             if($time->isDuring($period)) {
                 return true;
             }
