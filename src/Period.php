@@ -10,6 +10,11 @@ final class Period
     private $start;
     private $end;
 
+    public static function fromStrings(string $start, string $end) : self
+    {
+        return new self(Time::fromString($start), Time::fromString($end));
+    }
+
     public function __construct(Time $start, Time $end)
     {
         $this->assertStartIsBeforeEnd($start, $end);
