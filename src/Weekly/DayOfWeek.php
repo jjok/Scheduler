@@ -5,7 +5,7 @@ namespace jjok\Switches\Weekly;
 use jjok\Switches\Period;
 use jjok\Switches\Time;
 
-class DayOfWeek
+final class DayOfWeek
 {
     const MONDAY = 1;
     const TUESDAY = 2;
@@ -90,8 +90,4 @@ class DayOfWeek
 
         return false;
     }
-
-//    public function toInt() {
-//        return $this->day;
-//    }
 }
