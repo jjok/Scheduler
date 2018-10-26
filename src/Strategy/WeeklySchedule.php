@@ -34,7 +34,7 @@ final class WeeklySchedule implements SwitchStrategy
         $this->days[] = $day;
     }
 
-    public function isOnAt(DateTime $dateTime) : bool
+    public function shouldBeOnAt(DateTime $dateTime) : bool
     {
         $dayOfWeek = $dateTime->format('N');
         $time = Time::fromDateTime($dateTime);

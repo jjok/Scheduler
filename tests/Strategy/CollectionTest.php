@@ -27,7 +27,7 @@ final class CollectionTest extends TestCase
 
         $time = new \DateTimeImmutable();
 
-        $isOn = $strategy->isOnAt($time);
+        $isOn = $strategy->shouldBeOnAt($time);
 
         $this->assertSame($shouldBeOn, $isOn);
     }
@@ -62,19 +62,19 @@ final class CollectionTest extends TestCase
 
         $time = new \DateTimeImmutable('2018-10-25 22:46:00');
 
-        $this->assertTrue($strategy->isOnAt($time));
+        $this->assertTrue($strategy->shouldBeOnAt($time));
 
         $strategy->use('Strategy2');
-        $this->assertFalse($strategy->isOnAt($time));
+        $this->assertFalse($strategy->shouldBeOnAt($time));
 
         $strategy->use('Strategy4');
-        $this->assertTrue($strategy->isOnAt($time));
+        $this->assertTrue($strategy->shouldBeOnAt($time));
 
         $strategy->use('Strategy3');
-        $this->assertFalse($strategy->isOnAt($time));
+        $this->assertFalse($strategy->shouldBeOnAt($time));
 
         $strategy->use('Strategy1');
-        $this->assertTrue($strategy->isOnAt($time));
+        $this->assertTrue($strategy->shouldBeOnAt($time));
     }
 
     /**

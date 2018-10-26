@@ -7,7 +7,7 @@ use jjok\Switches\SwitchStrategy;
 
 final class AlwaysOn implements SwitchStrategy
 {
-    public function isOnAt(DateTime $dateTime): bool
+    public function shouldBeOnAt(DateTime $dateTime): bool
     {
         return true;
     }

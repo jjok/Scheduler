@@ -17,7 +17,7 @@ final class AlwaysOffTest extends TestCase
     {
         $strategy = new AlwaysOff();
 
-        assertIsOffAt($time, $strategy);
+        assertShouldBeOffAt($time, $strategy);
     }
 
     public function timeProvider() : array

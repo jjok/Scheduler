@@ -34,9 +34,9 @@ final class Collection implements SwitchStrategy
         $this->currentStrategy = $this->getStrategyByName($strategyName);
     }
 
-    public function isOnAt(DateTime $dateTime): bool
+    public function shouldBeOnAt(DateTime $dateTime): bool
     {
-        return $this->currentStrategy->isOnAt($dateTime);
+        return $this->currentStrategy->shouldBeOnAt($dateTime);
     }
 
     private function getStrategyByName(string $strategyName) : SwitchStrategy

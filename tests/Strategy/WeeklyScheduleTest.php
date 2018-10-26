@@ -14,7 +14,7 @@ final class WeeklyScheduleTest extends TestCase
     {
         $schedule = new WeeklySchedule([]);
 
-        assertIsOffAt('now', $schedule);
+        assertShouldBeOffAt('now', $schedule);
     }
 
     public function testNothingIsScheduledIfNoTimePeriodsAreAdded()
@@ -25,15 +25,16 @@ final class WeeklyScheduleTest extends TestCase
             $this->unscheduledDay(),
         ]);
 
-        assertIsOffAt('now', $schedule);
+        assertShouldBeOffAt('now', $schedule);
     }
 
-    public function testTimeIsScheduledIfScheduleContainsADayThatIsScheduled() {
+    public function testTimeIsScheduledIfScheduleContainsADayThatIsScheduled()
+    {
         $schedule = new WeeklySchedule([
             $this->scheduledDay(),
         ]);
 
-        assertIsOnAt('now', $schedule);
+        assertShouldBeOnAt('now', $schedule);
     }
 
     public function testOnlyOneDayHasToBeScheduled()
@@ -46,7 +47,7 @@ final class WeeklyScheduleTest extends TestCase
             $this->unscheduledDay(),
         ]);
 
-        assertIsOnAt('now', $schedule);
+        assertShouldBeOnAt('now', $schedule);
     }
 
     private function scheduledDay()
@@ -58,7 +59,6 @@ final class WeeklyScheduleTest extends TestCase
     {
         return $this->mockDayOfWeek(false);
     }
-
 
     private function mockDayOfWeek(bool $isScheduled)
     {

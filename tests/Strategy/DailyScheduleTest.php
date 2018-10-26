@@ -17,7 +17,7 @@ final class DailyScheduleTest extends TestCase
     {
         $strategy = new DailySchedule([]);
 
-        assertIsOffAt('now', $strategy);
+        assertShouldBeOffAt('now', $strategy);
     }
 
     public function testIsNotOnBetweenScheduledTimePeriods()
@@ -28,13 +28,13 @@ final class DailyScheduleTest extends TestCase
             $this->period('19:01:59', '23:20:19'),
         ]);
 
-        assertIsOffAt('00:00:00', $strategy);
-        assertIsOffAt('05:10:00', $strategy);
-        assertIsOffAt('06:34:22', $strategy);
-        assertIsOffAt('12:00:22', $strategy);
-        assertIsOffAt('19:01:58', $strategy);
-        assertIsOffAt('23:20:20', $strategy);
-        assertIsOffAt('23:59:59', $strategy);
+        assertShouldBeOffAt('00:00:00', $strategy);
+        assertShouldBeOffAt('05:10:00', $strategy);
+        assertShouldBeOffAt('06:34:22', $strategy);
+        assertShouldBeOffAt('12:00:22', $strategy);
+        assertShouldBeOffAt('19:01:58', $strategy);
+        assertShouldBeOffAt('23:20:20', $strategy);
+        assertShouldBeOffAt('23:59:59', $strategy);
     }
 
     public function testIsOnAtScheduledTimePeriods()
@@ -45,13 +45,13 @@ final class DailyScheduleTest extends TestCase
             $this->period('19:01:59', '23:20:19'),
         ]);
 
-        assertIsOnAt('06:34:23', $strategy);
-        assertIsOnAt('10:30:12', $strategy);
-        assertIsOnAt('12:00:21', $strategy);
-        assertIsOnAt('13:00:00', $strategy);
-        assertIsOnAt('13:25:01', $strategy);
-        assertIsOnAt('19:01:59', $strategy);
-        assertIsOnAt('23:20:19', $strategy);
+        assertShouldBeOnAt('06:34:23', $strategy);
+        assertShouldBeOnAt('10:30:12', $strategy);
+        assertShouldBeOnAt('12:00:21', $strategy);
+        assertShouldBeOnAt('13:00:00', $strategy);
+        assertShouldBeOnAt('13:25:01', $strategy);
+        assertShouldBeOnAt('19:01:59', $strategy);
+        assertShouldBeOnAt('23:20:19', $strategy);
     }
 
     private function period(string $start, string $end) : Period

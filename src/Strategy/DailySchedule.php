@@ -26,7 +26,7 @@ final class DailySchedule implements SwitchStrategy
         $this->periods[] = $period;
     }
 
-    public function isOnAt(DateTime $dateTime) : bool
+    public function shouldBeOnAt(DateTime $dateTime) : bool
     {
         $time = Time::fromDateTime($dateTime);
 

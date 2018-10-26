@@ -3,12 +3,12 @@
 use jjok\Switches\SwitchStrategy;
 use PHPUnit\Framework\Assert;
 
-function assertIsOffAt(string $time, SwitchStrategy $strategy) : void
+function assertShouldBeOffAt(string $time, SwitchStrategy $strategy) : void
 {
-    Assert::assertFalse($strategy->isOnAt(new DateTimeImmutable($time)));
+    Assert::assertFalse($strategy->shouldBeOnAt(new DateTimeImmutable($time)));
 }
 
-function assertIsOnAt(string $time, SwitchStrategy $strategy) : void
+function assertShouldBeOnAt(string $time, SwitchStrategy $strategy) : void
 {
-    Assert::assertTrue($strategy->isOnAt(new DateTimeImmutable($time)));
+    Assert::assertTrue($strategy->shouldBeOnAt(new DateTimeImmutable($time)));
 }
