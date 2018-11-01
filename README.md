@@ -5,6 +5,7 @@ An emulation of my central heating controller.
 
 [![Build Status](https://travis-ci.org/jjok/Switches.svg?branch=master)](https://travis-ci.org/jjok/Switches)
 [![Code Climate](https://codeclimate.com/github/jjok/Switches/badges/gpa.svg)](https://codeclimate.com/github/jjok/Switches)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b852974731790d9996d5/test_coverage)](https://codeclimate.com/github/jjok/Switches/test_coverage)
 
 
 TODO Update examples
