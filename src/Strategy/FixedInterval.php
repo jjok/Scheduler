@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace jjok\Switches\Strategy;
 
@@ -39,7 +39,7 @@ final class FixedInterval implements SwitchStrategy
         return $this->status;
     }
 
-    private function setStatus(int $status)
+    private function setStatus(bool $status)
     {
         $this->status = $status;
         $this->logTime();
