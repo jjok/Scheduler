@@ -5,7 +5,6 @@ namespace jjok\Switches\Weekly;
 use jjok\Switches\Period;
 use jjok\Switches\Strategy\WeeklySchedule;
 use jjok\Switches\SwitchStrategy as ScheduleStrategy;
-use jjok\Switches\Time;
 
 final class ScheduleFactory implements \jjok\Switches\ScheduleFactory
 {
@@ -34,6 +33,6 @@ final class ScheduleFactory implements \jjok\Switches\ScheduleFactory
             throw new \InvalidArgumentException('Period must be in the format "HH:MM:SS - HH:MM:SS".');
         }
 
-        return new Period(Time::fromString($start), Time::fromString($end));
+        return Period::fromStrings($start, $end);
     }
 }

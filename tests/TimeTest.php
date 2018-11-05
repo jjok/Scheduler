@@ -126,7 +126,7 @@ final class TimeTest extends TestCase
      */
     public function testTimeIsNotDuringPeriodIfItIsBeforePeriodStart()
     {
-        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+        $period = Period::fromStrings('08:00:00', '09:00:00');
 
         $time1 = Time::fromString('00:00:00');
         $time2 = Time::fromString('04:34:10');
@@ -141,7 +141,7 @@ final class TimeTest extends TestCase
      * @uses \jjok\Switches\Period
      */
     public function testTimeIsDuringPeriodIfBetweenStartAndEnd() {
-        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+        $period = Period::fromStrings('08:00:00', '09:00:00');
 
         $time1 = Time::fromString('08:00:00');
         $time2 = Time::fromString('08:34:01');
@@ -159,7 +159,7 @@ final class TimeTest extends TestCase
      */
     public function testTimeIsNotDuringPeriodIfItIsAfterPeriodEnd()
     {
-        $period = new Period(Time::fromString('08:00:00'), Time::fromString('09:00:00'));
+        $period = Period::fromStrings('08:00:00', '09:00:00');
 
         $time1 = Time::fromString('09:00:01');
         $time2 = Time::fromString('12:00:00');

@@ -3,7 +3,6 @@
 namespace jjok\Switches\Strategy;
 
 use jjok\Switches\Period;
-use jjok\Switches\Time;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,9 +22,9 @@ final class DailyScheduleTest extends TestCase
     public function testIsNotOnBetweenScheduledTimePeriods()
     {
         $strategy = new DailySchedule([
-            $this->period('06:34:23', '12:00:21'),
-            $this->period('13:00:00', '13:25:01'),
-            $this->period('19:01:59', '23:20:19'),
+            Period::fromStrings('06:34:23', '12:00:21'),
+            Period::fromStrings('13:00:00', '13:25:01'),
+            Period::fromStrings('19:01:59', '23:20:19'),
         ]);
 
         assertShouldBeOffAt('00:00:00', $strategy);
@@ -40,9 +39,9 @@ final class DailyScheduleTest extends TestCase
     public function testIsOnAtScheduledTimePeriods()
     {
         $strategy = new DailySchedule([
-            $this->period('06:34:23', '12:00:21'),
-            $this->period('13:00:00', '13:25:01'),
-            $this->period('19:01:59', '23:20:19'),
+            Period::fromStrings('06:34:23', '12:00:21'),
+            Period::fromStrings('13:00:00', '13:25:01'),
+            Period::fromStrings('19:01:59', '23:20:19'),
         ]);
 
         assertShouldBeOnAt('06:34:23', $strategy);
@@ -52,13 +51,5 @@ final class DailyScheduleTest extends TestCase
         assertShouldBeOnAt('13:25:01', $strategy);
         assertShouldBeOnAt('19:01:59', $strategy);
         assertShouldBeOnAt('23:20:19', $strategy);
-    }
-
-    private function period(string $start, string $end) : Period
-    {
-        return new Period(
-            Time::fromString($start),
-            Time::fromString($end)
-        );
     }
 }

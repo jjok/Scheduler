@@ -30,7 +30,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testMondayCanBeCreated()
     {
-        $monday = DayOfWeek::Monday([$this->period('00:00:00', '23:59:59')]);
+        $monday = DayOfWeek::Monday([Period::fromStrings('00:00:00', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($monday, 7, '23:59:59');
         $this->assertTimeOfDayIsScheduled($monday, 1, '00:00:00');
@@ -40,7 +40,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testTuesdayCanBeCreated()
     {
-        $tuesday = DayOfWeek::Tuesday([$this->period('00:00:01', '23:59:59')]);
+        $tuesday = DayOfWeek::Tuesday([Period::fromStrings('00:00:01', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($tuesday, 1, '23:59:59');
         $this->assertTimeOfDayIsNotScheduled($tuesday, 2, '00:00:00');
@@ -51,7 +51,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testWednesdayCanBeCreated()
     {
-        $wednesday = DayOfWeek::Wednesday([$this->period('00:00:00', '23:59:58')]);
+        $wednesday = DayOfWeek::Wednesday([Period::fromStrings('00:00:00', '23:59:58')]);
 
         $this->assertTimeOfDayIsNotScheduled($wednesday, 2, '23:59:59');
         $this->assertTimeOfDayIsScheduled($wednesday, 3, '00:00:00');
@@ -62,7 +62,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testThursdayCanBeCreated()
     {
-        $thursday = DayOfWeek::Thursday([$this->period('00:00:00', '23:59:59')]);
+        $thursday = DayOfWeek::Thursday([Period::fromStrings('00:00:00', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($thursday, 3, '23:59:59');
         $this->assertTimeOfDayIsScheduled($thursday, 4, '00:00:00');
@@ -72,7 +72,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testFridayCanBeCreated()
     {
-        $friday = DayOfWeek::Friday([$this->period('00:00:00', '23:59:59')]);
+        $friday = DayOfWeek::Friday([Period::fromStrings('00:00:00', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($friday, 4, '23:59:59');
         $this->assertTimeOfDayIsScheduled($friday, 5, '00:00:00');
@@ -82,7 +82,7 @@ final class DayOfWeekTest extends TestCase
 
     public function testSaturdayCanBeCreated()
     {
-        $saturday = DayOfWeek::Saturday([$this->period('00:00:00', '23:59:59')]);
+        $saturday = DayOfWeek::Saturday([Period::fromStrings('00:00:00', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($saturday, 5, '23:59:59');
         $this->assertTimeOfDayIsScheduled($saturday, 6, '00:00:00');
@@ -92,17 +92,12 @@ final class DayOfWeekTest extends TestCase
 
     public function testSundayCanBeCreated()
     {
-        $sunday = DayOfWeek::Sunday([$this->period('00:00:00', '23:59:59')]);
+        $sunday = DayOfWeek::Sunday([Period::fromStrings('00:00:00', '23:59:59')]);
 
         $this->assertTimeOfDayIsNotScheduled($sunday, 6, '23:59:59');
         $this->assertTimeOfDayIsScheduled($sunday, 7, '00:00:00');
         $this->assertTimeOfDayIsScheduled($sunday, 7, '23:59:59');
         $this->assertTimeOfDayIsNotScheduled($sunday, 1, '00:00:00');
-    }
-
-    private function period(string $start, string $end) : Period
-    {
-        return new Period(Time::fromString($start), Time::fromString($end));
     }
 
     //TODO Name this better
