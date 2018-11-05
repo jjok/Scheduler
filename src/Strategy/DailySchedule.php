@@ -7,23 +7,14 @@ use jjok\Switches\Period;
 use jjok\Switches\SwitchStrategy;
 use jjok\Switches\Time;
 
-use function array_walk;
-
 final class DailySchedule implements SwitchStrategy
 {
-    /**
-     * @var Period[]
-     */
-    private $periods = [];
+    /** @var Period[] */
+    private $periods;
 
-    public function __construct(array $periods)
+    public function __construct(Period ... $periods)
     {
-        array_walk($periods, [$this, 'addPeriod']);
-    }
-
-    private function addPeriod(Period $period) : void
-    {
-        $this->periods[] = $period;
+        $this->periods = $periods;
     }
 
     public function shouldBeOnAt(DateTime $dateTime) : bool
