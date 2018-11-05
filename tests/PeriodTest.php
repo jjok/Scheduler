@@ -10,18 +10,21 @@ use PHPUnit\Framework\TestCase;
  */
 final class PeriodTest extends TestCase
 {
-    public function testExceptionIsThrownIfStartOfPeriodIsAfterEnd()
+    /**
+     * @test
+     */
+    public function the_start_of_the_period_must_not_be_after_the_end()
     {
-        $start = Time::fromString('10:00:00');
-        $end = Time::fromString('09:00:00');
-
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('The start of a period must not be after the end.');
 
-        new Period($start, $end);
+        Period::fromStrings('10:00:00', '09:00:00');
     }
 
-    public function testTheStartAndEndOfAPeriodCanBeGot()
+    /**
+     * @test
+     */
+    public function a_period_can_be_constructed_from_a_valid_start_and_end_time()
     {
         $start = Time::fromString('12:00:00');
         $end = Time::fromString('14:00:00');
